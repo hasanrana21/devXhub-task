@@ -14,8 +14,8 @@
                     <button class="cross-button" v-if="showModal" @click="showModal = false">X</button>
                 </div>
 
-                        <div>
-                <transition name="formInputs" v-if="!dataSubmit ? 'd-none' : '' ">
+                        <!-- <div> -->
+                <transition name="formInputs" v-if="!dataSubmit">
                     <form v-on:submit.prevent class="form-inputs">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email Address</label><br>
@@ -28,22 +28,19 @@
                             </div>
                     </form>   
                 </transition>    
-                        </div>
+                        <!-- </div> -->
                     
                 <div class="submit-button-div">
 
-                    <transtion name="button1" v-if="dataSubmit">
-                        <button class="text-hide"> </button>
-                    </transtion>
-                    
-                    <transition name="button2" v-if="!dataSubmit">
+                        <button class="text-hide" v-if="dataSubmit"> </button>
+                        
                         <button type="submit"
                         :class="dataSubmit ? 'sendDiv' : 'text-center'"
                         @click="dataSubmit = true" 
-                        id="submit-button">
+                        id="submit-button"
+                        v-if="!dataSubmit">
                             <span>Submit</span> 
                         </button>
-                    </transition>
 
                 </div>
 
@@ -261,51 +258,23 @@ export default {
         opacity: 0;
     }
 /* end */
+
     .slide-enter-active,
     .slide-leave-active {
-    transition: transform .6s;
+        transition: transform .6s;
     }
 
     .slide-enter,
     .slide-leave-to {
-    transform: translateY(0%) translateX(100vw);
-    }
-/* end */
-
-    .secondSlide-enter-active{
-    transition: transform 6s;
-    }
-    .secondSlide-leave-active {
-    transition: transform .2s;
+        transform: translateY(0%) translateX(100vw);
     }
 
-    .secondSlide-enter,
-    .secondSlide-leave-to {
-    transform: translateY(0%) translateX(500vw);
-    }
-
-    /* Form Input */
-    .formInputs-enter-active{
-    }
+/* Form Input */
     .formInputs-leave-active {
         transition: opacity 1s;
     }
 
-    .formInputs-enter{
-    }
     .formInputs-leave-to {
         opacity: 0;
-    }
-
-    /* button21 animation */
-    .button1-enter-active{
-    transform: translateY(0%) translateX(500vw);
-    }
-    .button1-leave-active {
-    transform: translateY(0%) translateX(500vw);
-    }
-
-    .button1-enter,
-    .button1-leave-to {
     }
 </style>
