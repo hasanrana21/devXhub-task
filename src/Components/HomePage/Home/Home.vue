@@ -8,20 +8,6 @@
                 <li>Contact</li>
             </ul>
         </div>
-
-        <transition name="slide" appear>
-
-            <transition name="FirstSlider" v-if="dataSubmit">
-                <div class="slideAfterClick"> </div>
-            </transition>
-
-            <!-- <div class="secondSlideDiv"> -->
-            <transition name="secondSlide" v-if="dataSubmit">
-                <div class="slideAfterSlide"></div>
-            </transition>
-            <!-- </div> -->
-
-        </transition>
         
         <Navbar></Navbar>
     </div>
@@ -61,7 +47,7 @@ export default {
     z-index: 65;
     }
     .dashboard-menu {
-    padding-top: 70px;
+    padding-top: 135px;
     background-color: #22272e;
     }
     .dashboard-menu li {
@@ -75,63 +61,7 @@ export default {
     font-weight: 500;
     cursor: pointer;
     }
-    .slideAfterClick{
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -80;
-        background-color: #22272e;
-    }
-    .slideAfterSlide {
-        /* position: absolute; */
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 15;
-        background-color: red;
-        /* width: 1500px;
-        margin-right: 0;
-        margin-left: -200%;
-        margin-top: 16%; */
-        /* animation-fill-mode: forwards; */
-    }
 
-    /* Transition Part */
-    .slide-enter-active,
-    .slide-leave-active {
-    transition: transform .6s;
-    }
 
-    .slide-enter,
-    .slide-leave-to {
-    transform: translateY(0%) translateX(100vw);
-    }
-    /* end */
-    .FirstSlider-enter-active{
-    transition: transform 4s;
-    }
-    .FirstSlider-leave-active {
-    transition: transform .2s;
-    }
-
-    .FirstSlider-enter,
-    .FirstSlider-leave-to {
-        transform: translateY(0%) translateX(100vw);
-    }
-/* end */
-    .secondSlide-enter-active{
-    transition: transform 6s;
-    }
-    .secondSlide-leave-active {
-    transition: transform .2s;
-    }
-
-    .secondSlide-enter,
-    .secondSlide-leave-to {
-    transform: translateY(0%) translateX(500vw);
-    }
 
 </style>

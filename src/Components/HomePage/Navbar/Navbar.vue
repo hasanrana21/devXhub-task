@@ -14,9 +14,9 @@
                     <button class="cross-button" v-if="showModal" @click="showModal = false">X</button>
                 </div>
 
+                        <div>
                 <transition name="formInputs" v-if="!dataSubmit ? 'd-none' : '' ">
                     <form v-on:submit.prevent class="form-inputs">
-                        <div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email Address</label><br>
                                 <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -26,17 +26,25 @@
                                 <label for="exampleInputPassword1" class="form-label">Password</label><br>
                                 <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                             </div>
-                        </div>
                     </form>   
                 </transition>    
+                        </div>
                     
                 <div class="submit-button-div">
-                    <button type="submit"
-                    :class="dataSubmit ? 'sendDiv' : 'text-center'"
-                    @click="dataSubmit = true" 
-                    id="submit-button">
-                        <span>Submit</span> 
-                    </button>
+
+                    <transtion name="button1" v-if="dataSubmit">
+                        <button class="text-hide"> </button>
+                    </transtion>
+                    
+                    <transition name="button2" v-if="!dataSubmit">
+                        <button type="submit"
+                        :class="dataSubmit ? 'sendDiv' : 'text-center'"
+                        @click="dataSubmit = true" 
+                        id="submit-button">
+                            <span>Submit</span> 
+                        </button>
+                    </transition>
+
                 </div>
 
                 <div :class="dataSubmit ? 'secondSliderDiv' : '' ">
@@ -92,7 +100,7 @@ export default {
         animation-fill-mode: forwards;
         animation-duration: 4s;
         animation-delay: 5s;
-        margin-top: -30%;
+        margin-top: -43%;
     }
     @keyframes secondSlideDiv {
         0%{
@@ -107,6 +115,28 @@ export default {
         background-color: #44474f;
         height: 100vh;
         width: 100%;
+    }
+    .text-hide {
+        padding: 22px 68px;
+        background-color: goldenrod;
+        border: none;
+        border-radius: 4px;
+        
+        text-align: center;
+        animation-name: buttonDiv2;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        animation-delay: 1s;
+    }
+    @keyframes buttonDiv2 {
+        0%{
+            margin-top: 140px;
+        }
+        100%{
+            margin-top: 0px;
+            border-radius: 50px;
+            padding: 18px 20px;
+        }
     }
 
 
@@ -176,6 +206,8 @@ export default {
 
     .submit-button-div{
         text-align: center;
+        height: 50px;
+        margin-top: 70px;
     }
 
     #submit-button{
@@ -201,13 +233,10 @@ export default {
         cursor: pointer;
     }
 
-    .secondSlideDiv{
-        width: 1050px;
-    }
     .sendDiv{
         text-align: center;
         animation-name: buttonDiv;
-        animation-duration: 1s;
+        animation-duration: 2s;
         animation-fill-mode: forwards;
         animation-delay: 1s;
     }
@@ -216,7 +245,7 @@ export default {
             margin-top: 156px;
         }
         100%{
-            margin-top: 30px;
+            margin-top: 0px;
         }
     }
 
@@ -266,5 +295,17 @@ export default {
     }
     .formInputs-leave-to {
         opacity: 0;
+    }
+
+    /* button21 animation */
+    .button1-enter-active{
+    transform: translateY(0%) translateX(500vw);
+    }
+    .button1-leave-active {
+    transform: translateY(0%) translateX(500vw);
+    }
+
+    .button1-enter,
+    .button1-leave-to {
     }
 </style>
